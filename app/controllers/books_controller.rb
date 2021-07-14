@@ -8,8 +8,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to book_path
-  
+    redirect_to books_path
   end
   
   def show
@@ -20,7 +19,7 @@ class BooksController < ApplicationController
   end
 
   def update
- end
+  end
 
   def destroy
   end

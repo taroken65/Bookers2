@@ -7,9 +7,9 @@
    <%= f.submit 'Create Book' %>
 <% end %>
 
+ <h1>Books</h1>
 <% @books.each do |book| %>
-<div
-  <h2>Books</h2>
+<div>
   <p><%= image_tag('no_image.jpg') %></p>
   <p>Title：<%= book.title %></p>
   <p>説明：<%= book.opinion %></p>

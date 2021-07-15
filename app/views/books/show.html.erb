@@ -17,7 +17,7 @@
   </tr>
   <tr>
   <td><%= image_tag('no_image.jpg') %></td>
-  <td><%= @book.user.name %></td>
+  <td><%= link_to @book.user.name, user_path(@book.user) %></td>
   <td><%= @book.title %></td>
   <td><%= @book.opinion %></td>
   <% if @book.user == current_user %>

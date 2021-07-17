@@ -16,7 +16,7 @@
   <th>Opinion</th>
   </tr>
   <tr>
-  <td><%= image_tag('no_image.jpg') %></td>
+  <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></td>
   <td><%= link_to @book.user.name, user_path(@book.user) %></td>
   <td><%= @book.title %></td>
   <td><%= @book.opinion %></td>

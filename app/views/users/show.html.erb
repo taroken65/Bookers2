@@ -7,7 +7,9 @@
  <tr><th>introduction</th>
  <td><%= @user.introduction %></td></tr>
  </table>
- <%= link_to "Edit", edit_user_path(@user) %>
+ <%= button_to edit_user_path, method: :get do %>
+  <i class="fas fa-user-cog"></i>
+<% end %>
 
 <h1>New book</h1>
 <%= form_with model: @book, local:true do |f| %>

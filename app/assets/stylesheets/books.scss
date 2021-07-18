@@ -1,3 +1,18 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+th, td {
+    width: 70%;
+    border:solid 1px silver;
+    border-left-style:none;
+    border-right-style:none;
+    border-bottom-style:none;
+}
+
+#btn {
+   color: #fff;
+   background-color: #28a745;
+   border-color: #28a745;
+}

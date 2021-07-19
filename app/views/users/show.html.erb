@@ -11,7 +11,7 @@
    <td><%= @user.introduction %></td></tr>
    </table>
    <%= link_to edit_user_path(current_user.id), method: :get do %>
-   <i class="fas fa-user-cog"></i>
+   <i class="fas fa-user-cog btn btn-light border border-secondary mt-3" style="width: 60%" ></i>
    <% end %>
 
   <h2>New book</h2>
@@ -35,13 +35,8 @@
   <% @books.each do |book| %>
   <tr>
   <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></td>
-  <td><%= book.user.name %></td>
-  <td><%= book.title %></td>
+  <td><%= link_to book.title, book_path(book) %></td>
   <td><%= book.opinion %></td>
-  <% if book.user == current_user %>
-  <td><%= link_to "Edit", edit_book_path(book) %></td>
-  <td><%= link_to "Destroy", book_path(book), method: :delete %></td>
-  <% end %>
   <% end %>
   </tr>
   </table>

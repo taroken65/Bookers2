@@ -1,44 +1,62 @@
-<div class="container">
+<% if flash[:notice] %>
+  <p class="notice">
+    <%= flash[:notice] %>
+  </p>
+ <% end %>
+ 
+<div class="container pt-3">
  <div class="row">
+   
   <div class="col-md-3">
   <h2>User info</h2>
-   <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
    <table class="table">
-   <tr><th>name</th>
-   <td><%= @user.name %></td></tr>
-   <tr><th>introduction</th>
-   <td><%= @user.introduction %></td></tr>
+     <tr>
+       <th>name</th>
+       <th><%= @user.name %></th>
+      </tr>
+     <tr>
+       <th>introduction</th>
+       <th><%= @user.introduction %></th>
+     </tr>
    </table>
-   <%= link_to edit_user_path(current_user.id), method: :get do %>
-   <i class="fas fa-user-cog btn btn-light border border-secondary mt-3" style="width: 100%" ></i>
-   <% end %>
-
-  <h2>New book</h2>
+    <% if @user.id == current_user.id %>
+    <%= link_to edit_user_path, class: "btn btn-outline-secondary btn-block" do %>
+     <i class="fas fa-user-cog" ></i><% end %>
+     
+    <% else %>
+     <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
+     <i class="fas fa-user-cog" ></i>
+     <% end %>
+     <% end %>
+    
+  <h2 class="mt-3">New book</h2>
    <%= form_with model: @book, local:true do |f| %>
-   <p>Title</p>
-   <%= f.text_field :title %>
-   <p>Opinion</p>
-   <%= f.text_field :opinion %>
-   <%= f.submit 'Create Book', class: 'btn btn-success mt-3' %>
+     <p>Title</p>
+     <%= f.text_field :title %>
+     <p>Opinion</p>
+     <%= f.text_field :body %>
+     <%= f.submit 'Create Book', class: 'btn btn-success mt-3' %>
    <% end %>
-   </div>
+  </div>
  
  <div class="col-md-8 offset-md-1">
   <h2>Books</h2>
   <table class="table">
-  <tr>
-  <th></th>
-  <th>Title</th>
-  <th>Opinion</th>
-  </tr>
-  <% @books.each do |book| %>
-  <tr>
-  <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" , size:'40x40' %></td>
-  <td><%= link_to book.title, book_path(book) %></td>
-  <td><%= book.opinion %></td>
-  <% end %>
-  </tr>
-  </table>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" , size:'40x40' %></td>
+        <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= book.body %></td>
+      </tr>
+    <% end %>
+    </table>
   </div>
+  
  </div>
 </div>
